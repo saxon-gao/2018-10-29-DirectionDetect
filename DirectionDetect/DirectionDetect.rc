@@ -1,0 +1,741 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+#include "verrsrc.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(简体，中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "#include ""verrsrc.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#include ""res\\DirectionDetect.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""l.CHS\\afxres.rc""      // 标准组件\r\n"
+    "#if !defined(_AFXDLL)\r\n"
+    "#include ""l.CHS\\afxprint.rc""        // 打印/打印预览资源\r\n"
+    "#include ""l.CHS\\afxribbon.rc""        // MFC 功能区和控制条资源\r\n"
+    "#endif\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+ID_MAIN_ICON            ICON                    "res\\yc_fivicon.ico"
+
+IDR_MAINFRAME           ICON                    "res\\DirectionDetect.ico"
+
+IDR_DirectionDetectTYPE ICON                    "res\\DirectionDetectDoc.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
+IDR_MAINFRAME_256       BITMAP                  "res\\Toolbar256.bmp"
+
+IDB_BITMAP1             BITMAP                  "res\\yc5.bmp"
+
+IDB_BITMAP2             BITMAP                  "res\\yc6.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    BUTTON      ID_APP_ABOUT
+END
+
+IDR_MAINFRAME_256 TOOLBAR 32, 32
+BEGIN
+    BUTTON      ID_CMD_START
+    BUTTON      ID_CMD_STOP
+    BUTTON      ID_APP_EXIT
+    SEPARATOR
+    BUTTON      ID_PIC_OPEN
+    BUTTON      ID_CMD_NEXT_STEP
+    BUTTON      ID_PIC_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_STUDY
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "命令(&M)"
+    BEGIN
+        MENUITEM "开始",                          ID_CMD_START
+        MENUITEM "暂停",                          ID_CMD_STOP
+        MENUITEM "退出(&X)",                      ID_APP_EXIT
+    END
+    POPUP "调试(&D)"
+    BEGIN
+        MENUITEM "打开(&O)...\tCtrl+O",           ID_PIC_OPEN
+        MENUITEM "单步调试(&N)\tCtrl+X",            ID_CMD_NEXT_STEP
+        MENUITEM "保存(&S)\tCtrl+S",              ID_PIC_SAVE
+        MENUITEM "另存为(&A)...",                  ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "最近的文件",                       ID_FILE_MRU_FILE1
+        MENUITEM SEPARATOR
+    END
+    POPUP "设置(&E)"
+    BEGIN
+        MENUITEM "学习(&S)\tCtrl+Z",              ID_EDIT_STUDY
+        MENUITEM "其他(&P)\tCtrl+V",              ID_EDIT_PASTE
+    END
+    POPUP "视图(&V)"
+    BEGIN
+        POPUP "工具栏和停靠窗口(&T)"
+        BEGIN
+            MENUITEM "<占位符>",                       ID_VIEW_TOOLBAR
+        END
+        MENUITEM "状态栏(&S)",                     ID_VIEW_STATUS_BAR
+        POPUP "应用程序外观(&A)"
+        BEGIN
+            MENUITEM "Windows 2000(&2)",            ID_VIEW_APPLOOK_WIN_2000
+            MENUITEM "Office XP(&X)",               ID_VIEW_APPLOOK_OFF_XP
+            MENUITEM "Windows XP(&W)",              ID_VIEW_APPLOOK_WIN_XP
+            MENUITEM "Office 2003(&3)",             ID_VIEW_APPLOOK_OFF_2003
+            MENUITEM "Visual Studio 200&5",         ID_VIEW_APPLOOK_VS_2005
+            MENUITEM "Visual Studio 200&8",         ID_VIEW_APPLOOK_VS_2008
+            POPUP "Office 2007(&7)"
+            BEGIN
+                MENUITEM "蓝色样式(&B)",                    ID_VIEW_APPLOOK_OFF_2007_BLUE
+                MENUITEM "黑色样式(&L)",                    ID_VIEW_APPLOOK_OFF_2007_BLACK
+                MENUITEM "银色样式(&S)",                    ID_VIEW_APPLOOK_OFF_2007_SILVER
+                MENUITEM "水绿色样式(&A)",                   ID_VIEW_APPLOOK_OFF_2007_AQUA
+            END
+        END
+    END
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "关于 DirectionDetect(&A)...",   ID_APP_ABOUT
+    END
+END
+
+IDR_POPUP_EDIT MENU
+BEGIN
+    POPUP "编辑"
+    BEGIN
+        MENUITEM "剪切(&T)\tCtrl+X",              ID_EDIT_CUT
+        MENUITEM "复制(&C)\tCtrl+C",              ID_EDIT_COPY
+        MENUITEM "粘贴(&P)\tCtrl+V",              ID_EDIT_PASTE
+    END
+END
+
+IDR_HELP_MENU MENU
+BEGIN
+    MENUITEM "关于 DirectionDetect(&A)...",   ID_APP_ABOUT
+END
+
+IDR_THEME_MENU MENU
+BEGIN
+    MENUITEM "Office 2007 (蓝色样式)(&B)",      ID_VIEW_APPLOOK_OFF_2007_BLUE
+    MENUITEM "Office 2007 (黑色样式)(&L)",      ID_VIEW_APPLOOK_OFF_2007_BLACK
+    MENUITEM "Office 2007 (银色样式)(&S)",      ID_VIEW_APPLOOK_OFF_2007_SILVER
+    MENUITEM "Office 2007 (水绿色样式)(&A)",     ID_VIEW_APPLOOK_OFF_2007_AQUA
+    MENUITEM "Windows 7(&D)",               ID_VIEW_APPLOOK_WINDOWS_7
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 DirectionDetect"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            ID_MAIN_ICON,IDC_STATIC,7,7,18,18
+    LTEXT           "project name，1.0 版",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2018",IDC_STATIC,42,26,114,8
+    DEFPUSHBUTTON   "确定",IDOK,113,41,50,14,WS_GROUP
+END
+
+IDD_STUDY DIALOGEX 0, 0, 907, 486
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION
+CAPTION "Study"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定设置",IDOK,755,455,62,24
+    PUSHBUTTON      "取消设置",IDCANCEL,838,455,62,24
+    PUSHBUTTON      "打开图片",IDC_OPEN_PIC,98,456,62,23
+    LTEXT           "曝光值：",IDC_STATIC,674,72,32,9
+    EDITTEXT        IDC_EDIT1,716,69,40,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "下一步",IDC_NEXT_STUDY,214,456,62,23
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,590,7,1,472
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,591,112,309,1
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,592,217,308,1
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,590,327,310,1
+    LTEXT           "相机参数设置",IDC_STATIC,599,16,52,8
+    LTEXT           "光源参数设置",IDC_STATIC,599,120,52,8
+    LTEXT           "其他参数设置",IDC_STATIC,599,226,52,8
+END
+
+IDD_STUDY1 DIALOGEX 0, 0, 907, 486
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION
+CAPTION "Study"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定设置",IDOK,755,455,62,24
+    PUSHBUTTON      "取消设置",IDCANCEL,838,455,62,24
+    PUSHBUTTON      "打开图片",IDC_OPEN_PIC,98,456,62,23
+    PUSHBUTTON      "下一步",IDC_NEXT_STUDY,214,456,62,23
+    CONTROL         "",-1,"Static",SS_ETCHEDFRAME,590,7,1,472
+    CONTROL         "",-1,"Static",SS_ETCHEDFRAME,590,327,310,1
+    CONTROL         "",IDC_STUDY_TAB,"SysTabControl32",0x0,599,34,301,289,WS_EX_DLGMODALFRAME
+END
+
+IDD_STUDY1_P0 DIALOGEX 0, 0, 310, 281
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "曝光时间：",IDC_STATIC,58,144,49,8
+    EDITTEXT        IDC_EXPOSURE_TIME,107,139,82,14,ES_AUTOHSCROLL
+    LTEXT           "相机型号：",IDC_STATIC,58,48,43,8
+    LTEXT           "MV-CL020-40GM",IDC_STATIC,108,48,72,8
+    LTEXT           "分辨率：",IDC_STATIC,58,69,35,8
+    LTEXT           "2048 Pixel",IDC_STATIC,107,68,80,8
+    LTEXT           "采集模式：",IDC_STATIC,58,168,44,8
+    COMBOBOX        IDC_COMBO1,107,164,64,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "图像宽度：",IDC_STATIC,58,94,49,8
+    EDITTEXT        IDC_IMAGE_WIDTH,107,91,74,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_LINE_RATE,107,115,40,14,ES_AUTOHSCROLL
+    LTEXT           "行频：",IDC_STATIC,58,120,49,8
+END
+
+IDD_STUDY1_P1 DIALOGEX 0, 0, 310, 281
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "亮度值：",IDC_STATIC,75,111,34,8
+    EDITTEXT        IDC_EDIT1,130,108,82,14,ES_AUTOHSCROLL
+END
+
+IDD_STUDY1_P2 DIALOGEX 0, 0, 310, 281
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "波特率：",IDC_STATIC,81,100,34,8
+    EDITTEXT        IDC_EDIT1,137,97,82,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "板卡设置",IDC_BanKa_SET,81,159,67,23
+END
+
+IDD_STUDY1_P3 DIALOGEX 0, 0, 310, 281
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "图像保存路径：",IDC_STATIC,36,90,60,8
+    EDITTEXT        IDC_EDIT1,35,116,200,14,ES_AUTOHSCROLL | WS_DISABLED
+    PUSHBUTTON      ". . .",IDC_SAVE_IMAGE_PATH,89,87,50,14
+END
+
+IDD_STUDY1_P4 DIALOGEX 0, 0, 310, 281
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,147,222,50,14
+    PUSHBUTTON      "取消",IDCANCEL,225,222,50,14
+END
+
+IDD_STARTUP DIALOGEX 0, 0, 535, 309
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         IDB_BITMAP1,IDC_STATIC,"Static",SS_BITMAP,0,0,533,308
+END
+
+IDD_FORM_VIEW_DLG_1 DIALOGEX 0, 0, 213, 151
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "挤盂型号选择",IDC_SELECT_JIYU,16,20,182,114,WS_GROUP
+    CONTROL         "高65mm 外径67.00mm型挤盂",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON,57,36,115,18
+    CONTROL         "高43mm 外径63.65mm型挤盂",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,57,61,115,18
+    CONTROL         "高40mm 外径53.57mm型挤盂",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,57,85,115,18
+    CONTROL         "高38mm 外径53.60mm型挤盂",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON,57,108,115,18
+END
+
+IDD_FORM_VIEW_DLG_2 DIALOGEX 0, 0, 279, 353
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_LIST2,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,20,26,240,59
+    EDITTEXT        IDC_EDIT1,7,327,267,17,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "运行状态：",IDC_STATIC,7,317,41,8
+    CONTROL         IDB_BITMAP2,IDC_STATIC,"Static",SS_BITMAP,7,186,267,123
+    LTEXT           "当日检测数据：",IDC_STATIC,19,15,57,8
+    CONTROL         "",IDC_DATETIMEPICKER1,"SysDateTimePick32",DTS_RIGHTALIGN | WS_TABSTOP,99,89,100,15
+    LTEXT           "查询历史单日检测量：",IDC_STATIC,19,91,81,8
+    CONTROL         "",IDC_LIST4,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,19,104,240,59
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "CompanyName", "TODO: <公司名>"
+            VALUE "FileDescription", "DirectionDetect"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "DirectionDetect.exe"
+            VALUE "LegalCopyright", "TODO:  (C) <公司名>。  保留所有权利。"
+            VALUE "OriginalFilename", "DirectionDetect.exe"
+            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_STUDY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 900
+        VERTGUIDE, 599
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 479
+    END
+
+    IDD_STUDY1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 900
+        VERTGUIDE, 599
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 479
+    END
+
+    IDD_STUDY1_P0, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 296
+        VERTGUIDE, 58
+        VERTGUIDE, 107
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 274
+    END
+
+    IDD_STUDY1_P1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 296
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 274
+    END
+
+    IDD_STUDY1_P2, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 296
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 274
+    END
+
+    IDD_STUDY1_P3, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 296
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 274
+    END
+
+    IDD_STUDY1_P4, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 296
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 274
+    END
+
+    IDD_STARTUP, DIALOG
+    BEGIN
+        MOCKUP, 0, 50, 0, 0, ".\res\yc5.bmp"
+    END
+
+    IDD_FORM_VIEW_DLG_1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 206
+        VERTGUIDE, 57
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 144
+    END
+
+    IDD_FORM_VIEW_DLG_2, DIALOG
+    BEGIN
+        MOCKUP, 0, 50, 0, 0, "..\..\..\..\resources\icon\远创logo\2.png"
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 274
+        TOPMARGIN, 7
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_STUDY AFX_DIALOG_LAYOUT
+BEGIN
+    0,
+    100, 100, 0, 0,
+    100, 100, 0, 0,
+    30, 100, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    40, 100, 0, 0,
+    50, 0, 0, 100,
+    50, 30, 100, 0,
+    50, 60, 100, 0,
+    50, 80, 100, 0,
+    55, 10, 0, 0,
+    55, 35, 0, 0,
+    55, 65, 0, 0
+END
+
+IDD_STUDY1 AFX_DIALOG_LAYOUT
+BEGIN
+    0,
+    100, 100, 0, 0,
+    100, 100, 0, 0,
+    30, 100, 0, 0,
+    40, 100, 0, 0,
+    50, 0, 0, 100,
+    50, 80, 100, 0,
+    55, 10, 0, 0
+END
+
+IDD_STUDY1_P0 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_STUDY1_P1 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_STUDY1_P2 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_STUDY1_P3 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_STUDY1_P4 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_STARTUP AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_ABOUTBOX AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_FORM_VIEW_DLG_1 AFX_DIALOG_LAYOUT
+BEGIN
+    0,
+    0, 0, 100, 100,
+    50, 20, 0, 0,
+    50, 40, 0, 0,
+    50, 60, 0, 0,
+    50, 80, 0, 0
+END
+
+IDD_FORM_VIEW_DLG_2 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDP_OLE_INIT_FAILED     "OLE 初始化失败。  请确保 OLE 库是正确的版本。"
+END
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "DirectionDetect\n\nDirectionDetect\n\n\nDirectionDetect.Document\nDirectionDetect.Document"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE       "DirectionDetect"
+    AFX_IDS_IDLEMESSAGE     "就绪"
+END
+
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_NEW             "创建新文档\n新建"
+    ID_FILE_OPEN            "打开现有图片\n打开"
+    ID_FILE_CLOSE           "关闭活动文档\n关闭"
+    ID_FILE_SAVE            "保存当前截图\n保存"
+    ID_FILE_SAVE_AS         "用新名称保存活动文档\n另存为"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_ABOUT            "显示程序信息、版本号和版权信息\n关于"
+    ID_APP_EXIT             "退出应用程序\n退出"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_MRU_FILE1       "打开此文档"
+    ID_FILE_MRU_FILE2       "打开此文档"
+    ID_FILE_MRU_FILE3       "打开此文档"
+    ID_FILE_MRU_FILE4       "打开此文档"
+    ID_FILE_MRU_FILE5       "打开此文档"
+    ID_FILE_MRU_FILE6       "打开此文档"
+    ID_FILE_MRU_FILE7       "打开此文档"
+    ID_FILE_MRU_FILE8       "打开此文档"
+    ID_FILE_MRU_FILE9       "打开此文档"
+    ID_FILE_MRU_FILE10      "打开此文档"
+    ID_FILE_MRU_FILE11      "打开此文档"
+    ID_FILE_MRU_FILE12      "打开此文档"
+    ID_FILE_MRU_FILE13      "打开此文档"
+    ID_FILE_MRU_FILE14      "打开此文档"
+    ID_FILE_MRU_FILE15      "打开此文档"
+    ID_FILE_MRU_FILE16      "打开此文档"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_PANE            "切换到下一个窗格\n下一窗格"
+    ID_PREV_PANE            "切换回上一个窗格\n上一窗格"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_SPLIT         "将活动窗口拆分为多个窗格\n拆分"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "清除所选内容\n清除"
+    ID_EDIT_CLEAR_ALL       "清除全部内容\n全部清除"
+    ID_EDIT_COPY            "复制所选内容，将其放入剪贴板\n复制"
+    ID_EDIT_CUT             "剪切所选内容，将其放入剪贴板\n剪切"
+    ID_EDIT_FIND            "查找指定的文本\n查找"
+    ID_EDIT_PASTE           "插入剪贴板内容\n粘贴"
+    ID_EDIT_REPEAT          "重复上一操作\n重复"
+    ID_EDIT_REPLACE         "用其他文本替换特定的文本\n替换"
+    ID_EDIT_SELECT_ALL      "选定整个文档\n全选"
+    ID_EDIT_UNDO            "学习训练设置参数\n学习"
+    ID_EDIT_REDO            "重做上次撤消的操作\n重做"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_STATUS_BAR      "显示或隐藏状态栏\n切换状态栏"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCSIZE          "更改窗口大小"
+    AFX_IDS_SCMOVE          "更改窗口位置"
+    AFX_IDS_SCMINIMIZE      "将窗口缩小成图标"
+    AFX_IDS_SCMAXIMIZE      "将窗口放大到最大尺寸"
+    AFX_IDS_SCNEXTWINDOW    "切换到下一个文档窗口"
+    AFX_IDS_SCPREVWINDOW    "切换到上一个文档窗口"
+    AFX_IDS_SCCLOSE         "关闭活动窗口并提示保存文档"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCRESTORE       "将窗口恢复到正常大小"
+    AFX_IDS_SCTASKLIST      "激活任务列表"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STATUS_PANE1        "窗格 1"
+    IDS_STATUS_PANE2        "窗格 2"
+    IDS_TOOLBAR_STANDARD    "标准"
+    IDS_TOOLBAR_CUSTOMIZE   "自定义..."
+END
+
+STRINGTABLE
+BEGIN
+    IDS_EDIT_MENU           "编辑"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_STUDY           "学习训练，设置参数\n设置"
+    ID_CMD_START            "开始执行\n挤盂方向检测"
+    ID_CMD_STOP             "停止执行\n挤盂方向检测"
+    ID_CMD_NEXT_STEP        "单步处理打开图片\n单步执行"
+    ID_PIC_OPEN             "打开现有图片\n打开"
+    ID_PIC_SAVE             "保存当前截图\n保存"
+END
+
+#endif    // 中文(简体，中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#include "res\DirectionDetect.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "l.CHS\afxres.rc"      // 标准组件
+#if !defined(_AFXDLL)
+#include "l.CHS\afxprint.rc"        // 打印/打印预览资源
+#include "l.CHS\afxribbon.rc"        // MFC 功能区和控制条资源
+#endif
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
