@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "resource.h"
 #include "Dlg_2FormView.h"
-
+#include "DirectionDetectDoc.h"
 
 // CDlg_2FormView
 
@@ -24,6 +24,7 @@ void CDlg_2FormView::DoDataExchange(CDataExchange* pDX)
 {
 	CFormView::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LIST2, m_statisticListCtrl);
+	DDX_Control(pDX, IDC_LIST4, m_statisticListCtrlHistory);
 }
 
 BEGIN_MESSAGE_MAP(CDlg_2FormView, CFormView)
@@ -64,9 +65,34 @@ void CDlg_2FormView::OnInitialUpdate()
 	m_statisticListCtrl.InsertColumn(1, _T("类型"), LVCFMT_CENTER, 60);
 	m_statisticListCtrl.InsertColumn(2, _T("当日检测量"), LVCFMT_CENTER, 80);
 	m_statisticListCtrl.InsertColumn(3, _T("本次开机检测量"), LVCFMT_CENTER, 100);
-	//m_statisticListCtrl.InsertColumn(4, _T("向下数量"), LVCFMT_CENTER, 60);
-	
 
+	dwStyle = m_statisticListCtrlHistory.GetExtendedStyle();
+	dwStyle |= LVS_EX_FULLROWSELECT;
+	dwStyle |= LVS_EX_GRIDLINES;
+	m_statisticListCtrlHistory.SetExtendedStyle(dwStyle);
+	m_statisticListCtrlHistory.InsertColumn(0, _T("日期"), LVCFMT_CENTER, 80);
+	m_statisticListCtrlHistory.InsertColumn(1, _T("类型"), LVCFMT_CENTER, 60);
+	m_statisticListCtrlHistory.InsertColumn(2, _T("当日检测量"), LVCFMT_CENTER, 80);
+	m_statisticListCtrlHistory.InsertColumn(3, _T("本次开机检测量"), LVCFMT_CENTER, 100);
+
+	CDirectionDetectDoc *p = (CDirectionDetectDoc *)GetDocument();
+	for (int i = 0; i < 4; i++)
+	{
+		m_statisticListCtrl.InsertItem(i, p->m_ThisDayYieldData[i].sz_date);
+		CString sztype;
+		sztype.Format(_T("%d"), p->m_ThisDayYieldData[i].n_type);
+		m_statisticListCtrl.SetItemText(i, 1, sztype);
+
+		CString szDateYield;
+		szDateYield.Format(_T("%d"), p->m_ThisDayYieldData[i].n_dateYield);
+		m_statisticListCtrl.SetItemText(i, 2, szDateYield);
+
+		CString szThisTimeYield;
+		szThisTimeYield.Format(_T("%d"), p->m_ThisDayYieldData[i].n_thisTimeYield);
+		m_statisticListCtrl.SetItemText(i, 3, szThisTimeYield);
+	}
+	
+	
 
 	
 }

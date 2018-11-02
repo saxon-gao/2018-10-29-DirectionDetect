@@ -14,8 +14,9 @@ protected:
 	virtual ~CDlg_2FormView();
 
 public:
-	// 统计每日检测总数、向上数量、向下数量、类型
+	// 统计每日检测数据显示表
 	CListCtrl m_statisticListCtrl;
+	CListCtrl m_statisticListCtrlHistory;// 统计历史检测数据显示表
 
 
 #ifdef AFX_DESIGN_TIME

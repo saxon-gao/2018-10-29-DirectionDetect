@@ -7,6 +7,12 @@
 
 struct yieldData
 {
+	yieldData()
+	{
+		n_type = 0;
+		n_dateYield = 0;
+		n_thisTimeYield = 0;
+	}
 	CString sz_date;//日期
 	int n_type;//类型
 	int n_dateYield;//当日检测量
@@ -24,12 +30,18 @@ protected: // 仅从序列化创建
 // 特性
 public:
 	CCppToMysql *m_pCppToMysql;
+	yieldData  m_ThisDayYieldData[4];
+	yieldData  m_HistoryYieldData[4];
 // 操作
 public:
 	//初始化表格数据
-	BOOL initYieldDataFromMysql();
+	BOOL initYieldDataFromMysql(CString szdate);
 	//更新数据库数据
-	BOOL UpdateYieldDataToMysql();
+	BOOL UpdateYieldDataToMysql(char *cmd);
+
+
+
+
 // 重写
 public:
 	virtual BOOL OnNewDocument();

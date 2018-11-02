@@ -10,10 +10,9 @@
 #include "DirectionDetectDoc.h"
 #include "DirectionDetectView.h"
 #include "MfcHalcon.h"
-#include "logger\StaticLogger.h"
+//#include "logger\StaticLogger.h"
 #include "StartUpDlg.h"
-// 唯一的一个 日志 对象
-CStaticLogger g_logger;
+
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -146,18 +145,7 @@ BOOL CDirectionDetectApp::InitInstance()
 	CDirectionDetectView *pView = (CDirectionDetectView *)pMain->GetActiveView();
 	pView->m_lTimer = SetTimer(pView->m_hWnd,1, 400, NULL);
 
-	//初始化日志系统
-	LPCTSTR lf = NULL;
-	ILogger::LogLevel ll = ILogger::DEFAULT_LOG_LEVEL;
-	int pf = ILogger::PRINT_FLAG_FILE;
-	if (g_logger->Init(lf, ll, pf))
-	{
-		g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("日志系统初始化完成"));
-	}
-	else
-	{
-		AfxMessageBox(_T("日志系统初始化错误"));
-	}
+
 
 	// 唯一的一个窗口已初始化，因此显示它并对其进行更新
 	m_pMainWnd->ShowWindow(SW_SHOW);
