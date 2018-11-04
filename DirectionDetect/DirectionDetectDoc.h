@@ -19,6 +19,8 @@ struct yieldData
 	int n_thisTimeYield;//本次开机检测量
 };
 
+#define JIYU_TYPE_NUM 4
+
 class CCppToMysql;
 
 class CDirectionDetectDoc : public CDocument
@@ -30,16 +32,16 @@ protected: // 仅从序列化创建
 // 特性
 public:
 	CCppToMysql *m_pCppToMysql;
-	yieldData  m_ThisDayYieldData[4];
-	yieldData  m_HistoryYieldData[4];
+	yieldData  m_ThisDayYieldData[JIYU_TYPE_NUM];
+	yieldData  m_HistoryYieldData[JIYU_TYPE_NUM];
 // 操作
 public:
-	//初始化表格数据
-	BOOL initYieldDataFromMysql(CString szdate);
+	//获取数据库数据
+	BOOL getYieldDataFromMysql(CString szdate, yieldData *pYieldData);
 	//更新数据库数据
-	BOOL UpdateYieldDataToMysql(char *cmd);
-
-
+	BOOL UpdateYieldDataToMysql(CString szdate);
+	//自定义消息，响应工作线程检测完一个 doc->n_thisTimeYield数据+1并更新到表格
+	void addThisTimeYield(int type);
 
 
 // 重写

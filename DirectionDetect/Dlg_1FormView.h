@@ -14,7 +14,7 @@ protected:
 
 public:
 	int getSelectJIYUNum();
-
+	void resetSelectJIYUNum();
 
 public:
 #ifdef AFX_DESIGN_TIME

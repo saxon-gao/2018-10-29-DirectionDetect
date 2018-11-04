@@ -7,7 +7,9 @@
 #include "afxdialogex.h"
 #include "MfcHalcon.h"
 #include "Ini.h"
+#include "logger\StaticLogger.h"
 
+extern CStaticLogger g_logger;
 // CStudyDlg1 对话框
 
 IMPLEMENT_DYNAMIC(CStudyDlg1, CDialogEx)
@@ -16,7 +18,7 @@ CStudyDlg1::CStudyDlg1(CIni *pIni ,CWnd* pParent /*=NULL*/ )
 	: CDialogEx(IDD_STUDY1, pParent),
 	m_pIni(pIni)
 {
-
+	g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("CStudyDlg1  打开CStudyDlg1设置对话框"));
 }
 
 CStudyDlg1::~CStudyDlg1()
@@ -164,4 +166,5 @@ void CStudyDlg1::OnBnClickedOk()
 	a = m_pIni->WriteString(_T("ImageProcess Configuration"), _T("ImageSavaPath"), m_tabPage3.m_szImageSavePath);
 
 	CDialogEx::OnOK();
+	g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("OnBnClickedOk  保存设置入配置文件"));
 }

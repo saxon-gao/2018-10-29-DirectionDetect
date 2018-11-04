@@ -51,9 +51,18 @@ protected:
 	afx_msg void OnFilePrintPreview();
 	afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
+
+	//自定义消息
+	//等待工作线程相机等资源完全释放完成才启用 开始按钮
 	afx_msg LRESULT OnEnableStartButtom(WPARAM wParam, LPARAM lParam);
+	//等待工作线程初始化完成后再启用停止按钮
 	afx_msg LRESULT OnEnableStopButtom(WPARAM wParam, LPARAM lParam);
+	//检测完一个产品后doc数据的累加 及 view界面更新
+	afx_msg LRESULT OnAddThistimeYeildAtDoc(WPARAM wParam, LPARAM lParam);
+
 	DECLARE_MESSAGE_MAP()
+
+
 public://菜单栏、工具栏事件响应函数
 	//开始检测
 	afx_msg void OnCmdStart();

@@ -14,9 +14,11 @@ protected:
 	virtual ~CDlg_2FormView();
 
 public:
-	// 统计每日检测数据显示表
-	CListCtrl m_statisticListCtrl;
+	CListCtrl m_statisticListCtrl;// 统计每日检测数据显示表
 	CListCtrl m_statisticListCtrlHistory;// 统计历史检测数据显示表
+
+public:
+	void updateStatisticListCtrl();
 
 
 #ifdef AFX_DESIGN_TIME
@@ -35,6 +37,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	virtual void OnInitialUpdate();
+	afx_msg void OnDtnDatetimechangeDatetimepicker1(NMHDR *pNMHDR, LRESULT *pResult);
 };
 
 

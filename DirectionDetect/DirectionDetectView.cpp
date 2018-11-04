@@ -25,11 +25,18 @@
 extern CStaticLogger g_logger;
 IMPLEMENT_DYNCREATE(CDirectionDetectView, CView)
 
+
+// CDirectionDetectView 消息处理程序
+WorkThreadFunParameters g_WorkThreadFunParameter;
+
+
+
 BEGIN_MESSAGE_MAP(CDirectionDetectView, CView)
 	ON_WM_CONTEXTMENU()
 	ON_WM_RBUTTONUP()
 	ON_MESSAGE(ID_USER_MSG_THREAD_EXIT, &CDirectionDetectView::OnEnableStartButtom)
 	ON_MESSAGE(ID_USER_MSG_THREAD_initialed, &CDirectionDetectView::OnEnableStopButtom)
+	ON_MESSAGE(ID_USER_MSG_ADD_thistimeYeild, &CDirectionDetectView::OnAddThistimeYeildAtDoc)
 	ON_WM_TIMER()
 	ON_WM_SIZE()
 	//ON_UPDATE_COMMAND_UI(ID_CMD_START, &CDirectionDetectView::OnUpdateCmdStart)
@@ -116,6 +123,26 @@ CDirectionDetectDoc* CDirectionDetectView::GetDocument() const // 非调试版本是内
 
 
 
+
+LRESULT  CDirectionDetectView::OnEnableStartButtom(WPARAM wParam, LPARAM lParam)
+{
+	((CMainFrame*)::AfxGetMainWnd())->enableMenu(4, ID_CMD_START, ID_APP_EXIT, ID_FILE_OPEN, ID_EDIT_STUDY);
+	return 0;
+}
+LRESULT  CDirectionDetectView::OnEnableStopButtom(WPARAM wParam, LPARAM lParam)
+{
+	((CMainFrame*)::AfxGetMainWnd())->enableMenu(1, ID_CMD_STOP);
+	return 0;
+}
+LRESULT CDirectionDetectView::OnAddThistimeYeildAtDoc(WPARAM wParam, LPARAM lParam)
+{
+	GetDocument()->addThisTimeYield(g_WorkThreadFunParameter.m_iJiYuType-1);
+	return 0;
+}
+
+
+
+
 void CDirectionDetectView::OnTimer(UINT_PTR nIDEvent)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
@@ -155,8 +182,6 @@ void CDirectionDetectView::setHaloconWindRect()
 
 
 
-// CDirectionDetectView 消息处理程序
-WorkThreadFunParameters g_WorkThreadFunParameter;
 
 void CDirectionDetectView::OnCmdStart()
 {
@@ -170,14 +195,10 @@ void CDirectionDetectView::OnCmdStart()
 	控件启用
 	*/
 	//((CMainFrame*)::AfxGetMainWnd())->enableMenu(1, ID_CMD_STOP);
-	((CMainFrame*)::AfxGetMainWnd())->disableMenu(4, ID_CMD_START, ID_APP_EXIT, ID_FILE_OPEN, ID_EDIT_STUDY);
 	
 	g_WorkThreadFunParameter.m_iJiYuType = ((CMainFrame*)AfxGetMainWnd())->m_pDlg_1FormView->getSelectJIYUNum();
-	if (0 == g_WorkThreadFunParameter.m_iJiYuType)
-	{
-
-		return;
-	}
+	if (0 == g_WorkThreadFunParameter.m_iJiYuType)return;
+	((CMainFrame*)::AfxGetMainWnd())->disableMenu(4, ID_CMD_START, ID_APP_EXIT, ID_FILE_OPEN, ID_EDIT_STUDY);
 	g_WorkThreadFunParameter.m_hMainWnd = m_hWnd;
 	g_WorkThreadFunParameter.m_lStopSignal = 0;
 	g_WorkThreadFunParameter.m_lIsSaveImage = 0;
@@ -190,7 +211,7 @@ void CDirectionDetectView::OnCmdStart()
 
 
 
-	//m_handle = (HANDLE)_beginthreadex(NULL, 0, gWorkThreadFun, &g_WorkThreadFunParameter, 0, NULL);
+	m_handle = (HANDLE)_beginthreadex(NULL, 0, gWorkThreadFun, &g_WorkThreadFunParameter, 0, NULL);
 	return;
 }
 
@@ -208,18 +229,12 @@ void CDirectionDetectView::OnCmdStop()
 
 	if (0 == g_WorkThreadFunParameter.m_lStopSignal)
 		InterlockedIncrement((LPLONG)&g_WorkThreadFunParameter.m_lStopSignal);
+
+	//恢复类型选择复选框为未选中
+	((CMainFrame*)AfxGetMainWnd())->m_pDlg_1FormView->resetSelectJIYUNum();
 }
 
-LRESULT  CDirectionDetectView::OnEnableStartButtom(WPARAM wParam, LPARAM lParam)
-{
-	((CMainFrame*)::AfxGetMainWnd())->enableMenu(4, ID_CMD_START, ID_APP_EXIT, ID_FILE_OPEN, ID_EDIT_STUDY);
-	return 0;
-}
-LRESULT  CDirectionDetectView::OnEnableStopButtom(WPARAM wParam, LPARAM lParam)
-{
-	((CMainFrame*)::AfxGetMainWnd())->enableMenu(1, ID_CMD_STOP);
-	return 0;
-}
+
 
 void CDirectionDetectView::OnEditStudy()
 {

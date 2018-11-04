@@ -64,12 +64,23 @@ int CDlg_1FormView::getSelectJIYUNum()
 		break;
 	default:
 		AfxMessageBox(_T("请先选择挤盂类型！"), MB_OK);
-		//MessageBox(NULL, _T("请先选择挤盂类型！"), MB_OK);
 		a = 0;
 	}
 	return a;
 }
 
+
+void CDlg_1FormView::resetSelectJIYUNum()
+{
+	CButton* radio = (CButton*)GetDlgItem(IDC_RADIO1);
+	radio->SetCheck(BST_UNCHECKED);
+	radio = (CButton*)GetDlgItem(IDC_RADIO2);
+	radio->SetCheck(BST_UNCHECKED);
+	radio = (CButton*)GetDlgItem(IDC_RADIO3);
+	radio->SetCheck(BST_UNCHECKED);
+	radio = (CButton*)GetDlgItem(IDC_RADIO4);
+	radio->SetCheck(BST_UNCHECKED);
+}
 
 
 // CDlg_1FormView 消息处理程序

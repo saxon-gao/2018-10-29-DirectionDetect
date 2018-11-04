@@ -68,6 +68,7 @@
 #define IDC_DATETIMEPICKER1             1021
 #define ID_USER_MSG_THREAD_EXIT         20000
 #define ID_USER_MSG_THREAD_initialed    20001
+#define ID_USER_MSG_ADD_thistimeYeild    20002
 #define ID_EDIT_STUDY                   32771
 #define ID_32772                        32772
 #define ID_32773                        32773

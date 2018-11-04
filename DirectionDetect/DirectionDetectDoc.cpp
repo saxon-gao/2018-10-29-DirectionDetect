@@ -10,6 +10,7 @@
 #endif
 
 #include "DirectionDetectDoc.h"
+#include "Dlg_2FormView.h"
 #include "CppToMysql.h"
 #include <propkey.h>
 #include "logger\StaticLogger.h"
@@ -70,15 +71,20 @@ CDirectionDetectDoc::CDirectionDetectDoc()
 	}
 
 	//读取数据库数据
-	CString szdate = _T("2019-09-11");
-	initYieldDataFromMysql(szdate);
+	SYSTEMTIME systime;
+	GetLocalTime(&systime);
+	CString szDate;
+	szDate.Format(_T("%d-%02d-%02d"), systime.wYear, systime.wMonth, systime.wDay);
+
+	//CString szDate = _T("2018-11-02");
+	getYieldDataFromMysql(szDate, m_ThisDayYieldData);
 
 }
 
 CDirectionDetectDoc::~CDirectionDetectDoc()
 {
 	//更新数据库数据
-	//UpdateYieldDataToMysql();
+	UpdateYieldDataToMysql(m_ThisDayYieldData[0].sz_date);
 
 	//关闭数据库连接
 	m_pCppToMysql->CloseMySQLConn();
@@ -93,9 +99,8 @@ CDirectionDetectDoc::~CDirectionDetectDoc()
 }
 
 
-BOOL CDirectionDetectDoc::initYieldDataFromMysql(CString szdate)
+BOOL CDirectionDetectDoc::getYieldDataFromMysql(CString szdate, yieldData *pYieldData)
 {
-	PTCHAR sss = szdate.GetBuffer();
 	char chdate[20];
 	int n = szdate.GetLength(); //按字符计算，str的长度
 	int len = WideCharToMultiByte(CP_ACP, 0, szdate, n, NULL, 0, NULL, NULL);//按Byte计算str长度
@@ -110,42 +115,124 @@ BOOL CDirectionDetectDoc::initYieldDataFromMysql(CString szdate)
 	std::string str = m_pCppToMysql->SelectData(mysqlCommand, 3, &Msg);
 	const char*p = str.data();
 	//解包
-	int i=0;
+	size_t i=0;
 
 	while (str.find(0x5, i)!=-1)
 	{
-		int indexDate = str.find(0x6, i);
+		size_t indexDate = str.find(0x6, i);
 		std::string subDate = str.substr(i, indexDate-i);
 		const char *p1 = subDate.data();
 		//m_ThisDayYieldData[0].sz_date = subDate.data();
 
 		indexDate += 1;
-		int indexType = str.find(0x6, indexDate);
+		size_t indexType = str.find(0x6, indexDate);
 		std::string subType = str.substr(indexDate, indexType - indexDate);
 		const char *p2 = subType.data();
 		int nType = atoi(subType.data());
 		//m_ThisDayYieldData[nType-1].n_type = nType;
 
 		indexType += 1;
-		int indexDateYield = str.find(0x6, indexType);
+		size_t indexDateYield = str.find(0x6, indexType);
 		std::string subDateYield = str.substr(indexType, indexDateYield - indexType);
 		const char *p3 = subDateYield.data();
-		m_ThisDayYieldData[nType-1].n_dateYield = atoi(subDateYield.data());
+		pYieldData[nType-1].n_dateYield = atoi(subDateYield.data());
 
 		i = indexDateYield + 2;
 	}
 
-	for (int j = 0; j < 4; j++)//初始化日期栏
+	for (int j = 0; j < JIYU_TYPE_NUM; j++)//初始化日期栏+类型栏
 	{
-		m_ThisDayYieldData[j].sz_date = szdate;
-		m_ThisDayYieldData[j].n_type = j + 1;
+		pYieldData[j].sz_date = szdate;
+		pYieldData[j].n_type = j + 1;
 	}
-
+	g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("get mysql yeild data"));
 	return 0;
 }
 
-BOOL CDirectionDetectDoc::UpdateYieldDataToMysql(char *cmd)
+
+void CDirectionDetectDoc::addThisTimeYield(int type)
 {
+	SYSTEMTIME systime;
+	GetLocalTime(&systime);
+	CString szDate;
+	szDate.Format(_T("%d-%02d-%02d"), systime.wYear, systime.wMonth, systime.wDay);
+
+	if (szDate > m_ThisDayYieldData[type].sz_date)//新获取本地时间>记录日期，是为第二天
+	{
+		g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("addThisTimeYield 日期发生变化，更新前一日数据至MySQL，重置本地记录"));
+		
+		UpdateYieldDataToMysql(m_ThisDayYieldData[type].sz_date);
+
+		for (int i = 0; i < JIYU_TYPE_NUM; i++)
+		{
+			m_ThisDayYieldData[i].sz_date.Empty();
+			m_ThisDayYieldData[i].sz_date = szDate;
+			m_ThisDayYieldData[i].n_type = i + 1;
+			m_ThisDayYieldData[i].n_dateYield = 0;
+			m_ThisDayYieldData[i].n_thisTimeYield = 0;
+		}
+	}
+	else if(szDate == m_ThisDayYieldData[type].sz_date)
+	{
+
+	}
+	else
+	{
+		g_logger->Log(ILogger::LogLevel::LL_ERROR, _T("addThisTimeYield date get error"));
+	}
+
+
+	m_ThisDayYieldData[type].n_dateYield++;
+	m_ThisDayYieldData[type].n_thisTimeYield++;
+
+	//更新视图通用方法
+	//UpdateAllViews(NULL);  //then ondraw()
+	//方法二  获取指针，直接调用，此方法不用消息排队==sendmessage（整个框架都为单线程）
+	//获取指针还可通过主框架类获得，下面方法只能获取与文档绑定的视图类
+	CView* pView = NULL;
+	POSITION pos = GetFirstViewPosition();
+	while (pos != NULL)
+	{
+		pView = GetNextView(pos);
+		if (pView->IsKindOf(RUNTIME_CLASS(CDlg_2FormView)))
+			break;
+	}
+	((CDlg_2FormView*)pView)->updateStatisticListCtrl();
+}
+
+
+BOOL CDirectionDetectDoc::UpdateYieldDataToMysql(CString szdate)
+{
+	char chdate[20];
+	int n = szdate.GetLength(); //按字符计算，str的长度
+	int len = WideCharToMultiByte(CP_ACP, 0, szdate, n, NULL, 0, NULL, NULL);//按Byte计算str长度
+	//
+	WideCharToMultiByte(CP_ACP, 0, szdate, n, chdate, len, NULL, NULL);//宽字节转换为多字节编码
+	chdate[len] = '\0';//不要忽略末尾结束标志
+
+	int nret = 0;
+	for (int i = 0; i < JIYU_TYPE_NUM; i++)
+	{
+		if (m_ThisDayYieldData[i].n_dateYield > 0)//为0的不update
+		{
+			char mysqlCommand[100] = { 0 };
+			sprintf(mysqlCommand, "REPLACE INTO tb1(date, type, dateYield) VALUES('%s', %d, %d);"/*需要表有主键*/, 
+				chdate,
+				m_ThisDayYieldData[i].n_type, 
+				m_ThisDayYieldData[i].n_dateYield);
+			char *Msg = NULL;//消息变量
+			nret = m_pCppToMysql->UpdateData(mysqlCommand, &Msg);
+			if (nret == 1)
+			{
+				CString sztmp(Msg);
+				AfxMessageBox(sztmp);
+				g_logger->Log(ILogger::LogLevel::LL_ERROR, sztmp);
+				break;
+			}
+		}
+	}
+	if (nret == 0)
+		g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("UpdateYieldDataToMysql replace data success"));
 	return 0;
 }
 

@@ -13,7 +13,6 @@ IMPLEMENT_DYNCREATE(CDlg_2FormView, CFormView)
 CDlg_2FormView::CDlg_2FormView()
 	: CFormView(IDD_FORM_VIEW_DLG_2)
 {
-
 }
 
 CDlg_2FormView::~CDlg_2FormView()
@@ -28,6 +27,7 @@ void CDlg_2FormView::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CDlg_2FormView, CFormView)
+	ON_NOTIFY(DTN_DATETIMECHANGE, IDC_DATETIMEPICKER1, &CDlg_2FormView::OnDtnDatetimechangeDatetimepicker1)
 END_MESSAGE_MAP()
 
 
@@ -73,7 +73,7 @@ void CDlg_2FormView::OnInitialUpdate()
 	m_statisticListCtrlHistory.InsertColumn(0, _T("日期"), LVCFMT_CENTER, 80);
 	m_statisticListCtrlHistory.InsertColumn(1, _T("类型"), LVCFMT_CENTER, 60);
 	m_statisticListCtrlHistory.InsertColumn(2, _T("当日检测量"), LVCFMT_CENTER, 80);
-	m_statisticListCtrlHistory.InsertColumn(3, _T("本次开机检测量"), LVCFMT_CENTER, 100);
+	//m_statisticListCtrlHistory.InsertColumn(3, _T("本次开机检测量"), LVCFMT_CENTER, 100);
 
 	CDirectionDetectDoc *p = (CDirectionDetectDoc *)GetDocument();
 	for (int i = 0; i < 4; i++)
@@ -91,8 +91,58 @@ void CDlg_2FormView::OnInitialUpdate()
 		szThisTimeYield.Format(_T("%d"), p->m_ThisDayYieldData[i].n_thisTimeYield);
 		m_statisticListCtrl.SetItemText(i, 3, szThisTimeYield);
 	}
-	
-	
+}
 
+
+void CDlg_2FormView::OnDtnDatetimechangeDatetimepicker1(NMHDR *pNMHDR, LRESULT *pResult)
+{
+	LPNMDATETIMECHANGE pDTChange = reinterpret_cast<LPNMDATETIMECHANGE>(pNMHDR);
+	// TODO: 在此添加控件通知处理程序代码
+	CString szDate;
+	szDate.Format(_T("%d-%02d-%02d"), pDTChange->st.wYear, pDTChange->st.wMonth, pDTChange->st.wDay);
 	
+	CDirectionDetectDoc *p = (CDirectionDetectDoc *)GetDocument();
+	for (int i = 0; i < JIYU_TYPE_NUM; i++)
+	{
+		p->m_HistoryYieldData[i].sz_date.Empty();
+		p->m_HistoryYieldData[i].n_type = 0;
+		p->m_HistoryYieldData[i].n_dateYield = 0;
+	}
+
+	p->getYieldDataFromMysql(szDate, p->m_HistoryYieldData);
+	m_statisticListCtrlHistory.DeleteAllItems();
+	for (int i = 0; i < JIYU_TYPE_NUM; i++)
+	{
+		m_statisticListCtrlHistory.InsertItem(i, p->m_HistoryYieldData[i].sz_date);
+		CString sztype;
+		sztype.Format(_T("%d"), p->m_HistoryYieldData[i].n_type);
+		m_statisticListCtrlHistory.SetItemText(i, 1, sztype);
+
+		CString szDateYield;
+		szDateYield.Format(_T("%d"), p->m_HistoryYieldData[i].n_dateYield);
+		m_statisticListCtrlHistory.SetItemText(i, 2, szDateYield);
+	}
+	*pResult = 0;
+}
+
+
+void CDlg_2FormView::updateStatisticListCtrl()
+{
+	m_statisticListCtrl.DeleteAllItems();
+	CDirectionDetectDoc *p = (CDirectionDetectDoc *)GetDocument();
+	for (int i = 0; i < 4; i++)
+	{
+		m_statisticListCtrl.InsertItem(i, p->m_ThisDayYieldData[i].sz_date);
+		CString sztype;
+		sztype.Format(_T("%d"), p->m_ThisDayYieldData[i].n_type);
+		m_statisticListCtrl.SetItemText(i, 1, sztype);
+
+		CString szDateYield;
+		szDateYield.Format(_T("%d"), p->m_ThisDayYieldData[i].n_dateYield);
+		m_statisticListCtrl.SetItemText(i, 2, szDateYield);
+
+		CString szThisTimeYield;
+		szThisTimeYield.Format(_T("%d"), p->m_ThisDayYieldData[i].n_thisTimeYield);
+		m_statisticListCtrl.SetItemText(i, 3, szThisTimeYield);
+	}
 }

@@ -99,7 +99,6 @@ BOOL halcon_test(void* p)
 
 unsigned int __stdcall gWorkThreadFun(PVOID pM)
 {
-	//return 0;
 	/*工作流程
 	读取配资文件
 	初始化相机
@@ -116,6 +115,13 @@ unsigned int __stdcall gWorkThreadFun(PVOID pM)
 	*/
 	g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("拍照线程开始执行"));
 	WorkThreadFunParameters *pWorkThreadFunParameters = (WorkThreadFunParameters *)pM;
+
+
+
+
+	PostMessage(pWorkThreadFunParameters->m_hMainWnd, ID_USER_MSG_ADD_thistimeYeild, NULL, NULL);
+
+	return 0;
 
 
 	// Local control variables
