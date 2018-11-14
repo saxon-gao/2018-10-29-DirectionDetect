@@ -22,9 +22,6 @@
     <Filter Include="INI">
       <UniqueIdentifier>{b23e1fde-850c-4249-84ea-00f188e5e409}</UniqueIdentifier>
     </Filter>
-    <Filter Include="RS232/485">
-      <UniqueIdentifier>{6d4f2c88-cbee-4613-bc04-321cf4c5700f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="studyDlg">
       <UniqueIdentifier>{1cc1545a-3aba-4ff8-8776-034fe13addad}</UniqueIdentifier>
     </Filter>
@@ -33,6 +30,9 @@
     </Filter>
     <Filter Include="MySQL_">
       <UniqueIdentifier>{3014876d-fa4c-4371-9c03-2e27b45bfe88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SerialPort">
+      <UniqueIdentifier>{6d4f2c88-cbee-4613-bc04-321cf4c5700f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +105,15 @@
     <ClInclude Include="CppToMysql.h">
       <Filter>MySQL_</Filter>
     </ClInclude>
+    <ClInclude Include="StudyPWDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LasyLSerialPort.h">
+      <Filter>SerialPort</Filter>
+    </ClInclude>
+    <ClInclude Include="LSerialPort.h">
+      <Filter>SerialPort</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DirectionDetect.cpp">
@@ -160,6 +169,15 @@
     </ClCompile>
     <ClCompile Include="CppToMysql.cpp">
       <Filter>MySQL_</Filter>
+    </ClCompile>
+    <ClCompile Include="StudyPWDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LasyLSerialPort.cpp">
+      <Filter>SerialPort</Filter>
+    </ClCompile>
+    <ClCompile Include="LSerialPort.cpp">
+      <Filter>SerialPort</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

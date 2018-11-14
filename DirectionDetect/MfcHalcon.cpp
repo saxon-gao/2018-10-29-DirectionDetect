@@ -113,7 +113,7 @@ unsigned int __stdcall gWorkThreadFun(PVOID pM)
 	循环
 	释放相机
 	*/
-	g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("拍照线程开始执行"));
+	g_logger->Log(ILogger::LogLevel::LL_INFO, _T("拍照线程开始执行"));
 	WorkThreadFunParameters *pWorkThreadFunParameters = (WorkThreadFunParameters *)pM;
 
 
@@ -179,7 +179,7 @@ unsigned int __stdcall gWorkThreadFun(PVOID pM)
 			SetLineWidth(pWorkThreadFunParameters->m_lHalconWindId, 2);
 
 			isNotSetPart = FALSE;
-			g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("SetPart"));
+			g_logger->Log(ILogger::LogLevel::LL_INFO, _T("SetPart"));
 			//通知主线程启用停止按钮
 			PostMessage(pWorkThreadFunParameters->m_hMainWnd, ID_USER_MSG_THREAD_initialed, NULL, NULL);
 		}
@@ -210,7 +210,7 @@ unsigned int __stdcall gWorkThreadFun(PVOID pM)
 
 	}
 	CloseFramegrabber(hv_AcqHandle);
-	g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("拍照线程退出"));
+	g_logger->Log(ILogger::LogLevel::LL_INFO, _T("拍照线程退出"));
 	//通知主线程启用开始按钮
 	PostMessage(pWorkThreadFunParameters->m_hMainWnd, ID_USER_MSG_THREAD_EXIT, NULL, NULL);
 	return 0;

@@ -16,6 +16,8 @@
 #include "logger\StaticLogger.h"
 #include "MainFrm.h"
 #include "Ini.h"
+#include "StudyPWDlg.h"
+
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -239,9 +241,26 @@ void CDirectionDetectView::OnCmdStop()
 void CDirectionDetectView::OnEditStudy()
 {
 	// TODO: 在此添加命令处理程序代码
+#ifdef SETTING_DLG_OPEN
+	CString szpw = _T("");
+	CStudyPWDlg studyPWDlg(&szpw);
+	INT_PTR ret = studyPWDlg.DoModal();
+	if (1 == ret)
+	{
+		if (m_pIni->GetString(_T("Studypw"), _T("szStudypw")) == szpw)
+		{
+			CStudyDlg1 studyDlg(m_pIni);
+			studyDlg.DoModal();
+		}
+		else
+		{
+			AfxMessageBox(_T("输入正确密码"));
+		}
+	}
+#else
 	CStudyDlg1 studyDlg(m_pIni);
-
 	studyDlg.DoModal();
+#endif // SETTING_DLG_OPEN
 }
 
 

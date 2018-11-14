@@ -5,6 +5,10 @@
 #include "DirectionDetect.h"
 #include "StudyDlgTabPage2.h"
 #include "afxdialogex.h"
+#include "LSerialPort.h"
+
+
+CSerialPort mySerialPort;
 
 
 // CStudyDlgTabPage2 ¶Ô»°¿ò
@@ -14,7 +18,22 @@ IMPLEMENT_DYNAMIC(CStudyDlgTabPage2, CDialogEx)
 CStudyDlgTabPage2::CStudyDlgTabPage2(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_STUDY1_P2, pParent)
 {
-
+	if (!mySerialPort.InitPort(3))
+	{
+		AfxMessageBox(_T("initPort fail !"));
+	}
+	else
+	{
+		//AfxMessageBox(_T("initPort success !"));
+	}
+	if (!mySerialPort.OpenListenThread())
+	{
+		AfxMessageBox(_T("OpenListenThread fail !"));
+	}
+	else
+	{
+		//AfxMessageBox(_T("OpenListenThread success !"));
+	}
 }
 
 CStudyDlgTabPage2::~CStudyDlgTabPage2()
@@ -45,4 +64,10 @@ void CStudyDlgTabPage2::OnBnClickedBankaSet()
 	//}
 	//HWND  hw = ::FindWindow(NULL,_T("Shell"));
 	//::SetWindowPos(hw, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+
+
+
+	
+	byte chSendData[20] = { 0,1,2,3,4,5,6,7 };
+	mySerialPort.WriteData(chSendData, 20);
 }

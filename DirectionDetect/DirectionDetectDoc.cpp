@@ -42,8 +42,8 @@ CDirectionDetectDoc::CDirectionDetectDoc()
 	int pf = ILogger::PRINT_FLAG_FILE;
 	if (g_logger->Init(lf, ll, pf))
 	{
-		g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("-------====-------"));
-		g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("日志系统初始化完成"));
+		g_logger->Log(ILogger::LogLevel::LL_INFO, _T("-------start-------"));
+		g_logger->Log(ILogger::LogLevel::LL_INFO, _T("日志系统初始化完成"));
 	}
 	else
 	{
@@ -67,7 +67,7 @@ CDirectionDetectDoc::CDirectionDetectDoc()
 		g_logger->Log(ILogger::LogLevel::LL_ERROR, sztmp);
 	}
 	else {
-		g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("mysql connect success"));
+		g_logger->Log(ILogger::LogLevel::LL_INFO, _T("mysql connect success"));
 	}
 
 	//读取数据库数据
@@ -90,10 +90,10 @@ CDirectionDetectDoc::~CDirectionDetectDoc()
 	m_pCppToMysql->CloseMySQLConn();
 	m_pCppToMysql->~CCppToMysql();
 	m_pCppToMysql = NULL;
-	g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("mysql closeConnect success"));
+	g_logger->Log(ILogger::LogLevel::LL_INFO, _T("mysql closeConnect success"));
 	
 	//关闭日志系统
-	g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("------------------"));
+	g_logger->Log(ILogger::LogLevel::LL_INFO, _T("---------end---------"));
 	Sleep(100);
 	g_logger->UnInit();
 }
@@ -145,7 +145,7 @@ BOOL CDirectionDetectDoc::getYieldDataFromMysql(CString szdate, yieldData *pYiel
 		pYieldData[j].sz_date = szdate;
 		pYieldData[j].n_type = j + 1;
 	}
-	g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("get mysql yeild data"));
+	g_logger->Log(ILogger::LogLevel::LL_INFO, _T("get mysql yeild data"));
 	return 0;
 }
 
@@ -232,7 +232,7 @@ BOOL CDirectionDetectDoc::UpdateYieldDataToMysql(CString szdate)
 		}
 	}
 	if (nret == 0)
-		g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("UpdateYieldDataToMysql replace data success"));
+		g_logger->Log(ILogger::LogLevel::LL_INFO, _T("UpdateYieldDataToMysql replace data success"));
 	return 0;
 }
 

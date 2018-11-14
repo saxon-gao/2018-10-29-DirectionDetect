@@ -54,3 +54,4 @@
 
 //#define STARTUP_DLG_OPEN//启用远创开始界面
 //#define IS_DISABLE_MENU//隐藏关闭菜单、工具栏禁用功能
+//#define SETTING_DLG_OPEN//指定设置界面的密码进入对话框是否启用

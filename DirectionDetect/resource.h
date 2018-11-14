@@ -42,6 +42,8 @@
 #define IDD_FORM_VIEW_DLG_1             333
 #define IDD_FORM_VIEW_DLG_2             334
 #define IDB_BITMAP2                     338
+#define IDD_DIALOG1                     339
+#define IDD_STUDY_PW                    339
 #define IDC_BUTTON1                     1000
 #define IDC_OPEN_PIC                    1000
 #define IDC_                            1000
@@ -49,6 +51,7 @@
 #define IDC_BanKa_SET                   1000
 #define IDC_SLIDER1                     1001
 #define IDC_NEXT_STUDY                  1001
+#define IDC_BUTTON2                     1001
 #define IDC_EDIT1                       1002
 #define IDC_STUDY_TAB                   1004
 #define IDC_COMBO1                      1005
@@ -66,9 +69,12 @@
 #define IDC_LIST3                       1019
 #define IDC_LIST4                       1020
 #define IDC_DATETIMEPICKER1             1021
+#define IDC_EDIT_OLD_PW                 1022
+#define IDC_EDIT_NEW_PW                 1023
+#define IDC_EDIT_PW                     1024
 #define ID_USER_MSG_THREAD_EXIT         20000
 #define ID_USER_MSG_THREAD_initialed    20001
-#define ID_USER_MSG_ADD_thistimeYeild    20002
+#define ID_USER_MSG_ADD_thistimeYeild   20002
 #define ID_EDIT_STUDY                   32771
 #define ID_32772                        32772
 #define ID_32773                        32773
@@ -83,9 +89,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        339
+#define _APS_NEXT_RESOURCE_VALUE        341
 #define _APS_NEXT_COMMAND_VALUE         32782
-#define _APS_NEXT_CONTROL_VALUE         1022
+#define _APS_NEXT_CONTROL_VALUE         1025
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif

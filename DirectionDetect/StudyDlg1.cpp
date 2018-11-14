@@ -18,7 +18,8 @@ CStudyDlg1::CStudyDlg1(CIni *pIni ,CWnd* pParent /*=NULL*/ )
 	: CDialogEx(IDD_STUDY1, pParent),
 	m_pIni(pIni)
 {
-	g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("CStudyDlg1  打开CStudyDlg1设置对话框"));
+	g_logger->Log(ILogger::LogLevel::LL_INFO, _T("CStudyDlg1  打开CStudyDlg1设置对话框"));
+	m_tabPage4.m_pCini = pIni;//4界面消息处理需要记录日志
 }
 
 CStudyDlg1::~CStudyDlg1()
@@ -64,7 +65,7 @@ BOOL CStudyDlg1::OnInitDialog()
 	CRect rs;
 	m_studyTab.GetClientRect(&rs);
 	//调整子对话框在父窗口中的位置，可以改动数值，使子窗体的大小合适；
-	rs.top += 25;
+	rs.top += 22;
 	rs.bottom -= 3;
 	rs.left += 2;
 	rs.right -= 2;
@@ -166,5 +167,5 @@ void CStudyDlg1::OnBnClickedOk()
 	a = m_pIni->WriteString(_T("ImageProcess Configuration"), _T("ImageSavaPath"), m_tabPage3.m_szImageSavePath);
 
 	CDialogEx::OnOK();
-	g_logger->Log(ILogger::LogLevel::LL_DEBUG, _T("OnBnClickedOk  保存设置入配置文件"));
+	g_logger->Log(ILogger::LogLevel::LL_INFO, _T("OnBnClickedOk  保存设置入配置文件"));
 }
