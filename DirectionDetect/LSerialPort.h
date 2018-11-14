@@ -111,6 +111,11 @@ public:
     */  
     bool ReadChar(char &cRecved);  
   
+	//lzh
+	//ret -1等待回复超时
+	BOOL readString(char*p);
+
+
 private:  
   
     /** 打开串口 
@@ -141,6 +146,10 @@ private:
     *  @see: 
     */  
     static UINT WINAPI ListenThread(void* pParam);  
+
+
+	
+
   
 private:  
   

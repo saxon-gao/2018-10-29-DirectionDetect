@@ -330,3 +330,29 @@ bool CSerialPort::WriteData(unsigned char* pData, unsigned int length)
   
     return true;  
 }  
+
+
+BOOL CSerialPort::readString(char*cRecved)
+{
+	//等待返回
+	UINT BytesInQue = 0;
+	uint16_t loopNum = 100;
+	/** 如果串口输入缓冲区中无数据,则休息一会再查询 */
+	while (0 == BytesInQue)
+	{
+		loopNum--;
+		if (0 == loopNum)
+			return -1;
+		Sleep(5);
+		BytesInQue = GetBytesInCOM();
+	}
+	//char cRecved[20] = { 0 };
+	for (int i = 0; i<BytesInQue; i++)
+	{
+		if (ReadChar(cRecved[i]) == true)
+		{
+			continue;
+		}
+	}
+	return BytesInQue;
+}

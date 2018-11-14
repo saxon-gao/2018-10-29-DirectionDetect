@@ -53,12 +53,17 @@
 #define IDC_NEXT_STUDY                  1001
 #define IDC_BUTTON2                     1001
 #define IDC_EDIT1                       1002
+#define IDC_EDIT4                       1003
 #define IDC_STUDY_TAB                   1004
+#define IDC_BUTTON3                     1004
+#define IDC_BUTTON_LIGHT_OFF            1004
 #define IDC_COMBO1                      1005
 #define IDC_EDIT2                       1006
 #define IDC_IMAGE_WIDTH                 1006
+#define IDC_EDIT_LIGHT_INTENSITY        1006
 #define IDC_EDIT3                       1007
 #define IDC_LINE_RATE                   1007
+#define IDC_EDIT_COM_RET                1007
 #define IDC_EXPOSURE_TIME               1008
 #define IDC_SELECT_JIYU                 1013
 #define IDC_RADIO1                      1014
@@ -72,6 +77,7 @@
 #define IDC_EDIT_OLD_PW                 1022
 #define IDC_EDIT_NEW_PW                 1023
 #define IDC_EDIT_PW                     1024
+#define IDC_BUTTON_LIGHT_ON             1025
 #define ID_USER_MSG_THREAD_EXIT         20000
 #define ID_USER_MSG_THREAD_initialed    20001
 #define ID_USER_MSG_ADD_thistimeYeild   20002
@@ -91,7 +97,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        341
 #define _APS_NEXT_COMMAND_VALUE         32782
-#define _APS_NEXT_CONTROL_VALUE         1025
+#define _APS_NEXT_CONTROL_VALUE         1026
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif
